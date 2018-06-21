@@ -13,6 +13,7 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
     - Created project directory 
     - Created POA     
     - Created TFE Input Analysis.txt
+    - Created Git repository
 
 > In-Progress 
 
