@@ -1,0 +1,22 @@
+S1 POA - The File Engine 
+
+Goal - Create a python app that copies files found in a powershell produce text file to a flash drive. 
+
+>Reference 
+------------
+File produced from powershell script as follows:
+dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/18'} > c:\outputdir\modlistyyyymmdd.txt
+
+==== Activity Log - 201806 ====
+
+06/21 (R) 
+    - Created project directory 
+    - Created POA     
+    - Created TFE Input Analysis.txt
+
+> In-Progress 
+
+
+> Next: 
+    - Create an app that outputs line types, row counts, and any unidentified rows. 
+    
