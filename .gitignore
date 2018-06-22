@@ -6,6 +6,8 @@ __pycache__/
 # data files 
 /data 
 
+# Mac folder maint file
+.DS_Store
 
 # C extensions
 *.so
