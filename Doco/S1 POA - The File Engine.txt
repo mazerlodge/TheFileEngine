@@ -17,9 +17,14 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
     - Added ArgTools source code
     - Established TheoVI working folder
 
-> In-Progress 
+06/22 
+    - Created app entry point and stub of core class 
+    - Added command line args -infile and -outdir 
 
+> In-Progress 
+    - Add command line args -verifyfile that outputs line types, row counts, and any unidentified rows. 
+        -- Next: Continue build out of TheFileEngine.doVerifyFile() method
 
 > Next: 
-    - Create an app that outputs line types, row counts, and any unidentified rows. 
-    
+    - Add code to test use of import OS and shutil for file copy operations 0622 
+
