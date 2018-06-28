@@ -81,13 +81,29 @@ class TheFileEngine:
 
 	def doVerifyFile(self):
 
+		# Line patterns being sought. 
+		targetSegments = [ "    Directory:", "Mode", "----", "d----", "-a---" ] 
+		segmentTypes = ["Directory_Title", "Directory_Header", "Directory_Underline", "List_Row__Directory", "List_Row__File"]
+		segmentCount = [0,0,0,0,0]
+
 		# get the input lines 
 		lines = self.getInputFileLines()
 
 		# TODO: process the lines, categorizing them based on expected patterns. 
 		print "Found [%d] lines." % len(lines)
 
-		
+		for aline in lines:
+			segIndex = 0
+			for aseg in targetSegments:
+				if (aline.find(aseg) == 0): 
+					segmentCount[segIndex] += 1
+				segIndex += 1
+
+		segIndex = 0
+		for atype in segmentTypes:
+			print("%d = %s" % (segmentCount[segIndex], atype))
+
+
 	def doAction(self):
 	
 		if (self.bInDebug):
