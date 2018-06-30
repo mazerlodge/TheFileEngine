@@ -90,18 +90,33 @@ class TheFileEngine:
 		lines = self.getInputFileLines()
 
 		# TODO: process the lines, categorizing them based on expected patterns. 
-		print "Found [%d] lines." % len(lines)
-
+		print("Found [%d] lines." % len(lines))
+		
 		for aline in lines:
+				
 			segIndex = 0
 			for aseg in targetSegments:
+				segLen = len(aseg)
+
+				if (len(aline) >= segLen):	
+					relevantLinePart = aline[0:segLen]
+				else:
+					relevantLinePart = "NOT_SET"
+					continue 
+					
+				#print("Working line= [%s] with seg= [%s] find returned = %d" % (relevantLinePart, aseg, relevantLinePart.find(aseg)))
+					
 				if (aline.find(aseg) == 0): 
+					#print("Segment found!")
 					segmentCount[segIndex] += 1
+					break
 				segIndex += 1
 
+		# Reuse segIndex var to output counts by segment.
 		segIndex = 0
 		for atype in segmentTypes:
 			print("%d = %s" % (segmentCount[segIndex], atype))
+			segIndex += 1 
 
 
 	def doAction(self):
