@@ -10,19 +10,19 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
 ==== Activity Log - 201806 ====
 
 06/21 (R) 
-    - Created project directory 
-    - Created POA     
-    - Created TFE Input Analysis.txt
-    - Created Git repository
-    - Added ArgTools source code
-    - Established TheoVI working folder
+	- Created project directory 
+	- Created POA     
+	- Created TFE Input Analysis.txt
+	- Created Git repository
+	- Added ArgTools source code
+	- Established TheoVI working folder
 
 06/22 
-    - Created app entry point and stub of core class 
-    - Added command line args -infile and -outdir 
+	- Created app entry point and stub of core class 
+	- Added command line args -infile and -outdir 
 
 06/28
-    - Added to verify file method, still a WIP (outputs zeros for each segment type) 
+	- Added to verify file method, still a WIP (outputs zeros for each segment type) 
 
 06/29
 	- Diag on issue w/ verify file failing, traced to input file encoded in UTF-16, python match works with UTF-8
@@ -30,7 +30,8 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
 
 > In-Progress 
 
+
 > Next: 
 	- Test Powershell script with "-Encodng UTF8" option 0629
-    - Add code to test use of import OS and shutil for file copy operations 0622 
+	- Add code to test use of import OS and shutil for file copy operations 0622 
 
