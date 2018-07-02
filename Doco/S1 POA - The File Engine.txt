@@ -33,5 +33,6 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
 
 > Next: 
 	- Test Powershell script with "-Encodng UTF8" option 0629
+	- Add "-action genscript" (see EV note for details) 0702
 	- Add code to test use of import OS and shutil for file copy operations 0622 
 
