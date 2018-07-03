@@ -4,13 +4,20 @@ Goal - Create a list of the types of that can be found in a TFE input file.
 
 > Reference:
 - Input generated via:
-dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/18'} > c:\outputdir\modlistyyyymmdd.txt
+[obsolete] dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/18'} > c:\outputdir\modlistyyyymmdd.txt
 
-> Types of in output 
+Replace the above with:
+dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/18'} | out-file -encoding UTF8 c:\outputdir\modlistyyyymmdd.txt
+
+Note: Obsolete version produced UTF16 LE file encoding. 
+
+
+> Types of lines in output 
 - Empty 
 - Directory title           start with "    Directory:"
 - Directory header          start with "Mode"
 - Directory underline       start with "----"
 - List row is a directory   starts with "d----"
 - List row is a file        starts with "-a---"
+
 

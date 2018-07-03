@@ -5,7 +5,11 @@ Goal - Create a python app that copies files found in a powershell produce text 
 >Reference 
 ------------
 File produced from powershell script as follows:
-dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/18'} > c:\outputdir\modlistyyyymmdd.txt
+dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/18'} | out-file -encoding UTF8 c:\outputdir\modlistyyyymmdd.txt
+
+Note: Obsolete version produced UTF16 LE file encoding, causing issues with python code reading the file.
+
+
 
 ==== Activity Log - 201806 ====
 
@@ -27,6 +31,8 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
 06/29
 	- Diag on issue w/ verify file failing, traced to input file encoded in UTF-16, python match works with UTF-8
 
+07/03
+	- Modified powershell command to produce UTF8 instead of UTF16 LE files.
 
 > In-Progress 
 
