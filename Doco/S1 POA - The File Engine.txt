@@ -34,11 +34,12 @@ Note: Obsolete version produced UTF16 LE file encoding, causing issues with pyth
 07/03
 	- Modified powershell command to produce UTF8 instead of UTF16 LE files.
 
+07/13 
+
 > In-Progress 
 
 
 > Next: 
-	- Test Powershell script with "-Encodng UTF8" option 0629
 	- Add "-action genscript" (see EV note for details) 0702
 	- Add code to test use of import OS and shutil for file copy operations 0622 
 
