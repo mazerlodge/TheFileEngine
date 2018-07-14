@@ -10,7 +10,7 @@ class TheFileEngine:
 	bInDebug = False
 	action = "NOT_SET"
 	inputFile = "NOT_SET" 
-	outputDirectory = "NOT_SET"
+	targetPath = "NOT_SET"
 
 	def __init__(self,args):
 		if (self.parseArgs(args)):
@@ -19,13 +19,17 @@ class TheFileEngine:
 			print("Init failed in argument parser.")
 			
 	def showUsage(self):
-		print("Usage: python tfe.py -action [verifyfile | ...] -infile filename -outdir directory {-debug}\n")
+		print("Usage: python tfe.py -action [verifyfile | genscript] \n" 
+			  + "-infile filename -targetpath directory \n"
+			  + "-outfile filename \n"
+			  + "optional params: {-debug}\n")
 		
 	def parseArgs(self,args):
 		# Parse the arguments looking for required parameters.
 		# Return false if any tests fail.
 
 		subtestResults = []
+		subtestMessages = []
 		rval = True
 
 		# Instantiate the ArgParser
@@ -41,6 +45,8 @@ class TheFileEngine:
 			# action value must appear after target
 			self.action = ap.getArgValue("-action")
 			rv = True
+		else:
+			subtestMessages.append("-action with arg is required.")
 		subtestResults.append(rv)
 
         # check for input filename
@@ -48,13 +54,20 @@ class TheFileEngine:
 			# filename value must appear after target
 			self.inputFile = ap.getArgValue("-infile")
 			rv = True
+		else:
+			rv = False
+			subtestMessages.append("-infile with arg is required.")
 		subtestResults.append(rv)
 
-        # check for output directory
-		if (ap.isInArgs("-outdir", True)):
+        # check for target path
+		if (ap.isInArgs("-targetpath", True)):
 			# filename value must appear after target
-			self.outputDirectory = ap.getArgValue("-outdir")
+			self.targetPath = ap.getArgValue("-targetpath")
 			rv = True
+		else:
+			if (self.action == "genscript"):
+				rv = False
+				subtestMessages.append("-targetpath required when -action is genscript.")
 		subtestResults.append(rv)
 
 		# Determine if all subtests passed
@@ -62,7 +75,12 @@ class TheFileEngine:
 			if (self.bInDebug):
 				print "Arg subtest " + str(subtestResults[idx])
 			rval = rval and subtestResults[idx]
-				
+
+		if (rval == False):
+			for idx in range(len(subtestMessages)):
+				if (self.bInDebug):
+					print "ArgParse message: " + str(subtestMessages[idx])
+							
 		return(rval)
 	
 	def getInputFileLines(self):
