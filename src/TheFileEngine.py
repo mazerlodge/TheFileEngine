@@ -137,6 +137,68 @@ class TheFileEngine:
 			segIndex += 1 
 
 
+	def getDirFromLine(self, line, segPattern):
+		
+		rval = "NOT_SET" 
+		
+		startPos = line.find(segPattern) + len(segPattern)
+		rval = line[startPos:len(line)].strip()
+		
+		return rval
+		
+	def getFilenameFromLine(self, line, segPattern):
+		# given a line, extract the filename part an return it.
+		# Line like:
+		# -a---          6/1/2018   6:02 PM     117052 log0601.docx                                                              
+	
+		rval = "NOT_SET" 
+
+		# This bit of syntactic sugar reverses a string
+		cleanLine = line.strip()
+		reversedLine = cleanLine[::-1]			
+		
+		# In the reversed line pattern the first space marks beginning of the filename,
+		#   grab that segment and then reverse it again to get the filename.
+		spacePos = reversedLine.find(" ") 
+		reversedFilename = reversedLine[:spacePos]
+		rval = reversedFilename[::-1]
+		
+		return rval
+	
+	def doGenScript(self): 
+	
+		# Line patterns being sought. 
+		targetSegments = [ "    Directory:", "Mode", "----", "d----", "-a---" ] 
+		segmentTypes = ["Directory_Title", "Directory_Header", "Directory_Underline", "List_Row__Directory", "List_Row__File"]
+		segmentCount = [0,0,0,0,0]
+		
+		currentDir = "NOT_SET"
+		currentDirNoDrive = "NOT_SET"
+		filename = "NOT_SET" 
+		slashType = "\\" 		
+		baseCommandString = "copy %s%s%s %s%s%s%s%s"
+		# Note: baseCommand in format copy currentDir/file targetBaseDir/currentDir/fileAgain
+
+		# get the input lines 
+		lines = self.getInputFileLines()
+		
+		for aline in lines:			
+			segIndex = 0
+			for aseg in targetSegments:
+				if (aline.find(aseg) == 0): 
+					# Segment found.
+					segmentCount[segIndex] += 1
+					if (segmentTypes[segIndex] == "Directory_Title"):
+						currentDir = self.getDirFromLine(aline, aseg)
+						currentDirNoDrive = currentDir[3:]
+					
+					if (segmentTypes[segIndex] == "List_Row__File"):
+						filename = self.getFilenameFromLine(aline, aseg)
+						print (baseCommandString % (currentDir, slashType, filename, self.targetPath, slashType, currentDirNoDrive, slashType, filename))
+
+					break
+				segIndex += 1
+	
 	def doAction(self):
 	
 		if (self.bInDebug):
@@ -146,6 +208,8 @@ class TheFileEngine:
 		if (self.action == "verifyfile"):
 			self.doVerifyFile()
 	
+		if (self.action == "genscript"):
+			self.doGenScript() 
     
 	
 	
