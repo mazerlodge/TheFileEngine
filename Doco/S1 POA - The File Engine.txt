@@ -10,7 +10,6 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
 Note: Obsolete version produced UTF16 LE file encoding, causing issues with python code reading the file.
 
 
-
 ==== Activity Log - 201806 ====
 
 06/21 (R) 
@@ -31,15 +30,21 @@ Note: Obsolete version produced UTF16 LE file encoding, causing issues with pyth
 06/29
 	- Diag on issue w/ verify file failing, traced to input file encoded in UTF-16, python match works with UTF-8
 
+
+==== Activity Log - 201807 ====
+
 07/03
 	- Modified powershell command to produce UTF8 instead of UTF16 LE files.
 
-07/13 
+07/14
+	- Added genscript action with output to screen.
 
 > In-Progress 
 
 
 > Next: 
-	- Add "-action genscript" (see EV note for details) 0702
+	- Expand genscript action to output to a file
 	- Add code to test use of import OS and shutil for file copy operations 0622 
+
+
 
