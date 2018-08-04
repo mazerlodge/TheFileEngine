@@ -46,9 +46,10 @@ Note: Obsolete version produced UTF16 LE file encoding, causing issues with pyth
 	- Modified getFilenameFromLine() technique for extracting filenames to accomodate names with spaces 
 
 > In-Progress 
-	- Test rebase.
+
 
 > Next: 
+	- Testing an additional line, defect in git?
 	- Expand genscript action to output to a file
 	- Add code to test use of import OS and shutil for file copy operations 0622 
 
