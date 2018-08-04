@@ -3,7 +3,10 @@
 # Launch point for The File Engine class.
 
 """
-Usage: python tfe.py -action [verifyfile | ...] -infile filename -outdir directory {-debug}\n
+Usage: python tfe.py -action [verifyfile | genscript] 
+-infile filename -targetpath directory 
+-outfile filename 
+optional params: {-debug}
 
 """
 
