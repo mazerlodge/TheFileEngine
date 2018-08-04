@@ -38,6 +38,12 @@ Note: Obsolete version produced UTF16 LE file encoding, causing issues with pyth
 
 07/14
 	- Added genscript action with output to screen.
+	
+==== Activity Log - 201808 ====
+
+08/03
+	- Modified doGenScript()'s baseCommandString string to use xcopy w/ hack to answer directory or file prompt
+	- Modified getFilenameFromLine() technique for extracting filenames to accomodate names with spaces 
 
 > In-Progress 
 

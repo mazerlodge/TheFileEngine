@@ -149,20 +149,16 @@ class TheFileEngine:
 	def getFilenameFromLine(self, line, segPattern):
 		# given a line, extract the filename part an return it.
 		# Line like:
-		# -a---          6/1/2018   6:02 PM     117052 log0601.docx                                                              
+		# -a---          6/1/2018   6:02 PM     117052 activitylogs 20185.docx                                                              
 	
 		rval = "NOT_SET" 
-
-		# This bit of syntactic sugar reverses a string
-		cleanLine = line.strip()
-		reversedLine = cleanLine[::-1]			
-		
-		# In the reversed line pattern the first space marks beginning of the filename,
-		#   grab that segment and then reverse it again to get the filename.
-		spacePos = reversedLine.find(" ") 
-		reversedFilename = reversedLine[:spacePos]
-		rval = reversedFilename[::-1]
-		
+		nameParts = line.split()[5:] 
+		if (len(nameParts) > 0):
+			rval = ""
+			for aPart in nameParts:
+				rval += aPart + " "
+			rval = rval.strip() 
+				
 		return rval
 	
 	def doGenScript(self): 
@@ -176,7 +172,7 @@ class TheFileEngine:
 		currentDirNoDrive = "NOT_SET"
 		filename = "NOT_SET" 
 		slashType = "\\" 		
-		baseCommandString = "copy %s%s%s %s%s%s%s%s"
+		baseCommandString = "echo f | xcopy '%s%s%s' '%s%s%s%s%s'"
 		# Note: baseCommand in format copy currentDir/file targetBaseDir/currentDir/fileAgain
 
 		# get the input lines 
