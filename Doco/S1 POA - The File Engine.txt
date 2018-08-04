@@ -46,7 +46,7 @@ Note: Obsolete version produced UTF16 LE file encoding, causing issues with pyth
 	- Modified getFilenameFromLine() technique for extracting filenames to accomodate names with spaces 
 
 > In-Progress 
-
+	- Test rebase.
 
 > Next: 
 	- Expand genscript action to output to a file
