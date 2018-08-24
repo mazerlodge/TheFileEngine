@@ -9,6 +9,16 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
 
 Note: Obsolete version produced UTF16 LE file encoding, causing issues with python code reading the file.
 
+Process (in powershell):
+0) Create target bup folder c:\temp\TDCBupyyyymm 
+1) cd to source folder, Run above 'dir -recurse...' command, output to c:\temp\modlistyyyymm.txt with dates in month range. 
+2) Remove .pst file from bup (too big)
+2) cd to TFE project directory, source folder. 
+3) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymm.txt -targetpath c:\temp\tdcbupyyyymm > c:\temp\scriptbup.ps1 
+4) cd to temp and run .\scriptbup.ps1 
+5) Delete the scriptbup.ps1 file
+
+
 
 ==== Activity Log - 201806 ====
 
@@ -45,11 +55,16 @@ Note: Obsolete version produced UTF16 LE file encoding, causing issues with pyth
 	- Modified doGenScript()'s baseCommandString string to use xcopy w/ hack to answer directory or file prompt
 	- Modified getFilenameFromLine() technique for extracting filenames to accomodate names with spaces 
 
-> In-Progress 
+08/24
+	- Test run shows script output generates an error message for each xcopy line, "Invalid number of parameters"
+	- Using .ps1 files as script output instead of .bat, no error message. 
+	- Created process steps (see above) 
+	- Ran for months 5,6,7 and 8 to 8/24.
 
+> In-Progress 
+	
 
 > Next: 
-	- Testing an additional line, defect in git?
 	- Expand genscript action to output to a file
 	- Add code to test use of import OS and shutil for file copy operations 0622 
 
