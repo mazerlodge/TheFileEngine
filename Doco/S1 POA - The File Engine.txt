@@ -10,16 +10,17 @@ dir -recurse | ? {$_.lastwritetime -gt '6/1/18' -AND $_.lastwritetime -lt '6/30/
 	Note: Obsolete version produced UTF16 LE file encoding, causing issues with python code reading the file.
 
 Process (in powershell):
-0) Create target bup folder c:\temp\TDCBupyyyymmdd 
+0) Create target bup folder c:\temp\DBSBupyyyymmdd 
 1) cd to source folder, Run above 'dir -recurse...' command, output to c:\temp\modlistyyyymmdd.txt with dates in month range. 
 2) Remove .pst file from bup (too big)
 3) Search for NoArchive.txt file, remove folders containing this (m/b too big) 
 4) cd to TFE project directory, source folder. 
-5) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymmdd.txt -targetpath c:\temp\tdcbupyyyymmdd > c:\temp\scriptbup.ps1 
+5) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymmdd.txt -targetpath c:\temp\DBSbupyyyymmdd > c:\temp\scriptbup.ps1 
 6) cd to temp and run .\scriptbup.ps1 
 7) Delete the scriptbup.ps1 file
 
-
+Note: To enable running scripts in powershell:
+	Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ==== Activity Log - 201806 ====
 
@@ -62,6 +63,11 @@ Process (in powershell):
 	- Created process steps (see above) 
 	- Ran for months 5,6,7 and 8 to 8/24.
 
+==== Activity Log - 201812 ====
+
+12/08
+	- Updated instructions to include new laptop source in examples and instructions for enabling script running in powershell.
+	
 > In-Progress 
 	
 
