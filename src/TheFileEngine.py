@@ -73,7 +73,7 @@ class TheFileEngine:
 		# Determine if all subtests passed
 		for idx in range(len(subtestResults)):
 			if (self.bInDebug):
-				print("Arg subtest " + str(subtestResults[idx]))
+				print "Arg subtest " + str(subtestResults[idx])
 			rval = rval and subtestResults[idx]
 
 		if (rval == False):
