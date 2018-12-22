@@ -15,7 +15,7 @@ Process (in powershell):
 2) Remove .pst file from bup (too big)
 3) Search for NoArchive.txt file, remove folders containing this (m/b too big) 
 4) cd to TFE project directory, source folder. 
-5) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymmdd.txt -targetpath c:\temp\DBSbupyyyymmdd > c:\temp\scriptbup.ps1 
+5) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymmdd.txt -targetpath c:\temp\DBSBupyyyymmdd > c:\temp\scriptbup.ps1 
 6) cd to temp and run .\scriptbup.ps1 
 7) Delete the scriptbup.ps1 file
 
@@ -67,6 +67,9 @@ Note: To enable running scripts in powershell:
 
 12/08
 	- Updated instructions to include new laptop source in examples and instructions for enabling script running in powershell.
+	
+12/21
+	- Updated TheFileEngine.py print statements to use print() with parenthesis.
 	
 > In-Progress 
 	

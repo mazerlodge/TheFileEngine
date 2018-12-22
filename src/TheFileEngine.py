@@ -73,13 +73,13 @@ class TheFileEngine:
 		# Determine if all subtests passed
 		for idx in range(len(subtestResults)):
 			if (self.bInDebug):
-				print "Arg subtest " + str(subtestResults[idx])
+				print("Arg subtest " + str(subtestResults[idx]))
 			rval = rval and subtestResults[idx]
 
 		if (rval == False):
 			for idx in range(len(subtestMessages)):
 				if (self.bInDebug):
-					print "ArgParse message: " + str(subtestMessages[idx])
+					print("ArgParse message: " + str(subtestMessages[idx]))
 							
 		return(rval)
 	
@@ -190,7 +190,7 @@ class TheFileEngine:
 					
 					if (segmentTypes[segIndex] == "List_Row__File"):
 						filename = self.getFilenameFromLine(aline, aseg)
-						print (baseCommandString % (currentDir, slashType, filename, self.targetPath, slashType, currentDirNoDrive, slashType, filename))
+						print(baseCommandString % (currentDir, slashType, filename, self.targetPath, slashType, currentDirNoDrive, slashType, filename))
 
 					break
 				segIndex += 1
@@ -198,7 +198,7 @@ class TheFileEngine:
 	def doAction(self):
 	
 		if (self.bInDebug):
-			print "doAction: Processing action [%s]" % self.action
+			print("doAction: Processing action [%s]" % self.action)
 	
 		# determine which action to execute
 		if (self.action == "verifyfile"):
