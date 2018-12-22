@@ -18,6 +18,7 @@ Process (in powershell):
 5) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymmdd.txt -targetpath c:\temp\DBSBupyyyymmdd > c:\temp\scriptbup.ps1 
 6) cd to temp and run .\scriptbup.ps1 
 7) Delete the scriptbup.ps1 file
+8) copy the modlist file to ~\_KO\ModList 
 
 Note: To enable running scripts in powershell:
 	Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
