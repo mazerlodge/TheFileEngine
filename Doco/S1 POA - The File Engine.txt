@@ -5,17 +5,19 @@ Goal - Create a python app that copies files found in a powershell produce text 
 >Reference 
 ------------
 File produced from powershell script as follows:
-dir -recurse | ? {$_.lastwritetime -gt '1/1/19' -AND $_.lastwritetime -lt '6/30/19'} | out-file -encoding UTF8 c:\temp\modlistyyyymmdd.txt
+dir -recurse | ? {$_.lastwritetime -gt '1/1/19' -AND $_.lastwritetime -lt '6/30/19'} | out-file -encoding UTF8 c:\temp\modlistyyyymmddHOSTNAME.txt
 	Note: For current period, use tomorrow's date for -lt parameter.
 	Note: Obsolete version produced UTF16 LE file encoding, causing issues with python code reading the file.
 
+NOTE: When cascading backups, use earliest capture date from upstream backup to avoid dropping files between cascade steps.
+
 Process (in powershell):
-0) Create target bup folder c:\temp\DBSBupyyyymmdd 
-1) cd to source folder, Run above 'dir -recurse...' command, output to c:\temp\modlistyyyymmdd.txt with dates in month range. 
+0) Create target bup folder c:\temp\HOSTNAMEBupyyyymmdd_yyyymmdd 
+1) cd to source folder, Run above 'dir -recurse...' command, output to c:\temp\modlistyyyymmddHOSTNAME.txt with dates in month range. 
 2) Remove .pst file from bup (too big)
 3) Search for NoArchive.txt file, remove folders containing this (m/b too big) 
 4) cd to TFE project directory, source folder. 
-5) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymmdd.txt -targetpath c:\temp\DBSBupyyyymmdd > c:\temp\scriptbup.ps1 
+5) Run python tfe.py -action genscript -infile c:\temp\modlistyyyymmddHOSTNAME.txt -targetpath c:\temp\HOSTNAMEBupyyyymmdd_yyyymmdd > c:\temp\scriptbup.ps1 
 6) cd to temp and run .\scriptbup.ps1 
 7) Delete the scriptbup.ps1 file
 8) copy the modlist file to ~\_KO\ModList 
