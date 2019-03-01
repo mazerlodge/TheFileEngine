@@ -74,6 +74,11 @@ Note: To enable running scripts in powershell:
 12/21
 	- Updated TheFileEngine.py print statements to use print() with parenthesis.
 	
+==== Activity Log - 201903 ====
+
+03/01
+	- Changes to mod list file format
+
 > In-Progress 
 	
 
