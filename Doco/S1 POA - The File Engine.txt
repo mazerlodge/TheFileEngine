@@ -12,7 +12,7 @@ dir -recurse | ? {$_.lastwritetime -gt '1/1/19' -AND $_.lastwritetime -lt '6/30/
 NOTE: When cascading backups, use earliest capture date from upstream backup to avoid dropping files between cascade steps.
 
 Process (in powershell):
-0) Create target bup folder c:\temp\HOSTNAMEBupyyyymmdd_yyyymmdd 
+0) Create target bup folder c:\temp\BupHOSTNAMEyyyymmdd_yyyymmdd 
 1) cd to source folder, Run above 'dir -recurse...' command, output to c:\temp\modlistHOSTNAMEyyyymmdd_yyyymmdd.txt with dates in month range. 
 2) Remove .pst file from bup (too big)
 2.5) Search for NewFolder.txt, indicates files may have been moved that do not have modified dates.
