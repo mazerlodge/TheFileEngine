@@ -1,6 +1,6 @@
 S1 POA - The File Engine 
 
-Goal - Create a python app that copies files found in a powershell produce text file to a flash drive. 
+Goal - Create a python app that copies files found in a powershell produce text file backup.
 
 >Reference 
 ------------
