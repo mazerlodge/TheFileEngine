@@ -13,12 +13,11 @@ NOTE: When cascading backups, use earliest capture date from upstream backup to 
 
 Process (in powershell):
 0) Create target bup folder c:\temp\BupHOSTNAMEyyyymmdd_yyyymmdd 
-1) cd to source folder, Run above 'dir -recurse...' command, output to c:\temp\modlistHOSTNAMEyyyymmdd_yyyymmdd.txt with dates in month range. 
-2) Remove .pst file from bup (too big)
-2.5) Search for NewFolder.txt, indicates files may have been moved that do not have modified dates.
+1) cd to source folder, Run above 'dir -recurse...' command, output to c:\temp\modlistHOSTNAMEyyyymmdd_yyyymmdd.txt 
+2) Search for NewFolder.txt, indicates files may have been moved that do not have modified dates.
 3) Search for NoArchive.txt file, remove folders containing this (m/b too big) 
 4) cd to TFE project directory, source folder. 
-5) Run python tfe.py -action genscript -infile c:\temp\modlistHOSTNAMEyyyymmdd_yyyymmdd.txt -targetpath c:\temp\HOSTNAMEBupyyyymmdd_yyyymmdd > c:\temp\scriptbup.ps1 
+5) Run python tfe.py -action genscript -infile c:\temp\modlistHOSTNAMEyyyymmdd_yyyymmdd.txt -targetpath c:\temp\BupHOSTNAMEyyyymmdd_yyyymmdd > c:\temp\scriptbup.ps1 
 6) cd to temp and run .\scriptbup.ps1 
 7) Delete the scriptbup.ps1 file
 8) copy the modlist file to ~\_KO\ModList 
@@ -67,18 +66,44 @@ Note: To enable running scripts in powershell:
 	- Created process steps (see above) 
 	- Ran for months 5,6,7 and 8 to 8/24.
 
+09/28
+	- Updated commonly overlooked placeholder text (outputdir vs temp)
+
 ==== Activity Log - 201812 ====
+11/22
+	- Updated instructions
 
 12/08
 	- Updated instructions to include new laptop source in examples and instructions for enabling script running in powershell.
 	
 12/21
 	- Updated TheFileEngine.py print statements to use print() with parenthesis.
-	
-==== Activity Log - 201903 ====
+
+12/22
+	- Updated syntax to Python 3.7
+	- Updated instructions for modlist preservation.
+
+==== Activity Log - 2019 ====
+
+01/05 
+ 	- Updated dir sample to use 2019 dates
+
+02/23 
+	- Updated instructions for cascading backups and including host name in mod list
 
 03/01
 	- Changes to mod list file format
+
+03/23 
+ 	- Changed bup folder name structure, now consistent w/ modlist filename
+
+04/01 
+	- Minor title update (testing checkin from a diff client) 
+
+04/06	
+	- Updated activity log with detail from check-in comments 
+	- Modified process steps, removed check for .PST and renumbered list 
+	- Corrected filename pattern in python run step 
 
 > In-Progress 
 	
