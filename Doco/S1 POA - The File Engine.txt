@@ -25,6 +25,9 @@ Process (in powershell):
 Note: To enable running scripts in powershell:
 	Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
+	May need to also (or in lieu of the above): Unblock-File .\gencmds.ps1
+	
+
 ==== Activity Log - 201806 ====
 
 06/21 (R) 
