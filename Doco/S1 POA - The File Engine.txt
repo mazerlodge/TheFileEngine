@@ -25,6 +25,8 @@ Process (in powershell):
 Note: To enable running scripts in powershell:
 	Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
+	May need to also (or in lieu of the above): Unblock-File .\gencmds.ps1
+
 Steps on Extraction:
 1) Search for FolderReorg.txt file, on extraction this can help reorg files that don't have update timestamps and have been moved.
 
@@ -108,6 +110,9 @@ Steps on Extraction:
 	- Updated activity log with detail from check-in comments 
 	- Modified process steps, removed check for .PST and renumbered list 
 	- Corrected filename pattern in python run step 
+	
+10/16
+	- Added steps on extraction to reference FolderReorg.txt file usage.
 
 > In-Progress 
 	
