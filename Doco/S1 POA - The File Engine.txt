@@ -25,6 +25,10 @@ Process (in powershell):
 Note: To enable running scripts in powershell:
 	Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
+Steps on Extraction:
+1) Search for FolderReorg.txt file, on extraction this can help reorg files that don't have update timestamps and have been moved.
+
+
 ==== Activity Log - 201806 ====
 
 06/21 (R) 
