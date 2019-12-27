@@ -107,7 +107,7 @@ class TheFileEngine:
 		# get the input lines 
 		lines = self.getInputFileLines()
 
-		# TODO: process the lines, categorizing them based on expected patterns. 
+		# Process the lines, categorizing them based on expected patterns. 
 		print("Found [%d] lines." % len(lines))
 		
 		for aline in lines:
@@ -121,9 +121,11 @@ class TheFileEngine:
 				else:
 					relevantLinePart = "NOT_SET"
 					continue 
-					
-				#print("Working line= [%s] with seg= [%s] find returned = %d" % (relevantLinePart, aseg, relevantLinePart.find(aseg)))
-					
+
+				if (self.bInDebug):	
+					print("Working line part=[%s] with target seg=[%s] find returned=[%d]" % \
+						(relevantLinePart, aseg, relevantLinePart.find(aseg)))
+
 				if (aline.find(aseg) == 0): 
 					#print("Segment found!")
 					segmentCount[segIndex] += 1
